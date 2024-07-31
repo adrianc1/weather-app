@@ -1,163 +1,106 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: white;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    background-color: black;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
 }
-
-.hidden {
-    display: none;
-}
-
+/* Navigation Bar styling */
 #nav {
-    height: 100%;
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border: 2px solid yellow;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 10%;
+	background-color: black;
+	color: white;
 }
 
-#nav > * {
-    height: 100%;
-    text-align: center;
+#logo-container {
+	display: flex;
+	flex: 1;
+	align-items: center;
 }
 
-.nav-title {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2rem;
-    font-weight: 400;
-    margin-bottom: 20px;
-}
-
-#create-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 5%;
-}
-
-.create-btn {
-    color: #090909;
-    padding: 0.7em 1.7em;
-    font-size: 18px;
-    border-radius: 0.5em;
-    background: #e8e8e8;
-    cursor: pointer;
-    border: 1px solid #e8e8e8;
-    cursor: pointer;
-}
-
-#content {
-    height: 100%;
-    width: 100%;
-    flex: 2;
-}
-
-#header {
-    height: 15%;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-}
-
-#folder-form {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    border: 2px solid red;
-}   
-
-#task-form {
-    display: flex;
-    margin: auto;
-    width: 90%;
-    flex-direction: column;
-    
-}
-
-.task-ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-top: 1px solid yellow;
-    border-bottom: 1px solid yellow;
-    gap: 10%;
-}
-
-.task-li {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+#nav-list-container {
+	flex: 1;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 li {
-    list-style-type: none;
+	list-style-type: none;
 }
 
-#modal-container {
-    display: flex; /* Initially hide the modal container */
-    position: fixed; /* Ensures the modal stays positioned */
-    top: 0;
-    left: 0;
-    width: 100%; /* Stretches to full width */
-    height: 100%; /* Stretches to full height */
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
-    justify-content: center; /* Center the modal content horizontally (optional) */
-    align-items: center; /* Center the modal content vertically (optional) */
-  }
+/* Main Body Styling  */
 
-  #modal {
-    height: 100%;
-    width: 100%;
-    background-color: rgb(182, 64, 64); 
-    padding: 20px; 
-    border-radius: 5px;
-    height: 400px;
-    width: 400px; 
-  }
+#main {
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
 
-  #submit, #submit-project {
-    color: black;
-  }
+/* Search bar */
+#search-bar-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+	margin: auto;
+}
 
-  input {
-    outline: none;
-    padding: 5px;
-    font-size: 16px;
-    border-width: 1px;
-    border-color: #CCCCCC;
-    background-color: #FFFFFF;
-    color: #000000;
-    border-style: solid;
-    border-radius: 0px;
-    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
-  }
+#search {
+	width: 30rem;
+	line-height: 2rem;
+	border-radius: 5px;
+	border: 0.2px solid black;
+}
 
-  #main {
-    display: flex;
-    flex-direction: column;
-    flex: 2;
-  }
+#search-btn {
+	line-height: 2rem;
+	width: 5rem;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	background-color: rgb(104, 104, 246);
+}
+/* Main Weather Container  */
 
-  .subproject {
-    cursor: pointer;
-  }
+#main {
+	background-image: url(bkg.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#main-weather-container {
+	height: 50%;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	background-color: rgba(153, 143, 213, 0.5);
+}
 
-  #trash {
-    color: red;
-    cursor: pointer;
-  }
+.day-container {
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	flex: 1;
+	width: 100%;
+	border: 1px solid black;
+}
 
+.current-day {
+	flex: 2;
+}
+
+#location {
+	color: #fff;
+	font-size: 2rem;
+}

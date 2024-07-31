@@ -1,84 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/b293c74bcc.js" crossorigin="anonymous"></script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Weather App!</title>
+	</head>
+	<body>
+		<nav id="nav">
+			<div id="logo-container">This is a logo</div>
+			<ul id="nav-list-container">
+				<li id="home">Home</li>
+				<li id="News">News</li>
+				<li id="photos">Photos</li>
+				<li id="contact">Contact</li>
+			</ul>
+		</nav>
+		<div id="main">
+			<div id="search-bar-container">
+				<input type="text" id="search" />
+				<button id="search-btn">Search</button>
+			</div>
 
-    <title> Todo List ! </title>
-</head>
-<body>
+			<div id="location"></div>
 
-    <!-- side nav bar -->
-    <nav id="nav">
-        <h2 id="my-projects-title" class="nav-title"> My Projects </h2>
-        <div id="my-projects">
-        </div>
+			<div id="main-weather-container">
+				<div id="day0" class="day-container current-day">
+					<h3 id="current-day-title" class="day-of-week"></h3>
+					<div id="current-weather-icon"></div>
+					<div id="current-temp"></div>
+					<div id="current-high-temp"></div>
+					<div id="current-low-temp"></div>
+				</div>
+				<div id="day1" class="day-container">
+					<h3 id="day1-title" class="day-of-week"></h3>
+					<h4 id="date"></h4>
+					<div id="day1-weather-icon"></div>
+					<div id="day1-high-temp"></div>
+					<div id="day1-low-temp"></div>
+				</div>
+				<div id="day2" class="day-container">
+					<h3 id="day2-title" class="day-of-week"></h3>
+					<div id="day2-weather-icon"></div>
+					<div id="day2-high-temp"></div>
+					<div id="day2-low-temp"></div>
+				</div>
+				<div id="day3" class="day-container">
+					<h3 id="day3-title" class="day-of-week"></h3>
+					<div id="day3-weather-icon"></div>
+					<div id="day3-high-temp"></div>
+					<div id="day3-low-temp"></div>
+				</div>
+				<div id="day4" class="day-container">
+					<h3 id="day4-title" class="day-of-week"></h3>
+					<div id="day4-weather-icon"></div>
+					<div id="day4-high-temp"></div>
+					<div id="day4-low-temp"></div>
+				</div>
+				<div id="day5" class="day-container">
+					<h3 id="day5-title" class="day-of-week"></h3>
+					<div id="day5-weather-icon"></div>
+					<div id="day5-high-temp"></div>
+					<div id="day5-low-temp"></div>
+				</div>
+				<div id="day6" class="day-container">
+					<h3 id="day6-title" class="day-of-week"></h3>
+					<div id="day6-weather-icon"></div>
+					<div id="day6-high-temp"></div>
+					<div id="day6-low-temp"></div>
+				</div>
+			</div>
+		</div>
 
-        <div id="create-list-container">
-            <button id="create" class="create-btn"> Create New Task </button>
-            <button id="create-pjt" class="create-btn"> Create New Project </button>
-        </div>
-    </nav>
-
-<!-- main content  -->
- <main id="main">
-    <header id="header">
-        <h2 id="current-date-title">Today</h2>
-        <h3 id="current-project-title"></h3>
-    </header>
-        <div id="content"></div>
- </main>
-
-
-    <!-- user input modal forms  -->
-    <div id="modal-container">
-        <div id="modal">
-
-            <!-- Task Creation Form -->
-            <form action="" id="task-form" autocomplete="off">
-                
-                <br>
-                <br>
-
-                <label for="task-title">Title:</label>
-                <input type="text" id="task-title">
-
-                <label for="task-description">Description:</label>
-                <input type="text" id="task-description">
-
-                <div id="priority-container">
-                    <label for="low-pri">Low Priority</label>
-                    <input type="radio" id="low-pri" name="priority" value="low">
-            
-                    <label for="med-pri">Med Priority</label>
-                    <input type="radio" id="med-pri" name="priority" value="med">
-            
-                    <label for="high-pri">High Priority</label>
-                    <input type="radio" id="high-pri" name="priority" value="high">
-                </div>
-                <br>
-                <label for="date">Due Date:</label>
-                <input type="date" id="date" name="date">
-                <br>
-                <!-- submit button -->
-                <button type="button" for="input" id="submit"> Submit </button>
-                <br>
-                <!-- show the list in the console button -->
-                <button id="show">show the list!</button>
-                </form>
-
-                <!-- Get Folder information  -->
-                <form action="" id="folder-form" >
-
-                    <label for="project-title">New Project Title:</label>
-                    <input type="text" id="project-title">
-
-                    <button type="button" for="project-title" id="submit-project">Submit</button>
-
-
-                </form>
-        </div>
-    </div>
-</body>
+		<script src="main.js"></script>
+	</body>
 </html>
