@@ -3,6 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="style.css" />
 		<title>Weather App!</title>
 	</head>
@@ -17,57 +23,73 @@
 			</ul>
 		</nav>
 		<div id="main">
-			<div id="search-bar-container">
-				<input type="text" id="search" />
-				<button id="search-btn">Search</button>
-			</div>
+			<form action="">
+				<div id="search-bar-container">
+					<input type="text" id="search" />
+					<button id="search-btn">Search</button>
+				</div>
+			</form>
 
+			<input type="checkbox" name="toggle" id="toggle" />
 			<div id="location"></div>
 
 			<div id="main-weather-container">
 				<div id="day0" class="day-container current-day">
 					<h3 id="current-day-title" class="day-of-week"></h3>
 					<div id="current-weather-icon"></div>
-					<div id="current-temp"></div>
-					<div id="current-high-temp"></div>
-					<div id="current-low-temp"></div>
+					<div class="temp-class">
+						<div id="current-temp"></div>
+						<div id="current-high-temp"></div>
+						<div id="current-low-temp"></div>
+					</div>
 				</div>
 				<div id="day1" class="day-container">
 					<h3 id="day1-title" class="day-of-week"></h3>
-					<h4 id="date"></h4>
-					<div id="day1-weather-icon"></div>
-					<div id="day1-high-temp"></div>
-					<div id="day1-low-temp"></div>
+					<div id="day1-weather-icon" class="icon-class"></div>
+					<div class="temp-class">
+						<div id="day1-high-temp"></div>
+						<div id="day1-low-temp"></div>
+					</div>
 				</div>
 				<div id="day2" class="day-container">
 					<h3 id="day2-title" class="day-of-week"></h3>
-					<div id="day2-weather-icon"></div>
-					<div id="day2-high-temp"></div>
-					<div id="day2-low-temp"></div>
+					<div id="day2-weather-icon" class="icon-class"></div>
+					<div class="temp-class">
+						<div id="day2-high-temp"></div>
+						<div id="day2-low-temp"></div>
+					</div>
 				</div>
 				<div id="day3" class="day-container">
 					<h3 id="day3-title" class="day-of-week"></h3>
-					<div id="day3-weather-icon"></div>
-					<div id="day3-high-temp"></div>
-					<div id="day3-low-temp"></div>
+					<div id="day3-weather-icon" class="icon-class"></div>
+					<div class="temp-class">
+						<div id="day3-high-temp"></div>
+						<div id="day3-low-temp"></div>
+					</div>
 				</div>
 				<div id="day4" class="day-container">
 					<h3 id="day4-title" class="day-of-week"></h3>
-					<div id="day4-weather-icon"></div>
-					<div id="day4-high-temp"></div>
-					<div id="day4-low-temp"></div>
+					<div id="day4-weather-icon" class="icon-class"></div>
+					<div class="temp-class">
+						<div id="day4-high-temp"></div>
+						<div id="day4-low-temp"></div>
+					</div>
 				</div>
 				<div id="day5" class="day-container">
 					<h3 id="day5-title" class="day-of-week"></h3>
-					<div id="day5-weather-icon"></div>
-					<div id="day5-high-temp"></div>
-					<div id="day5-low-temp"></div>
+					<div id="day5-weather-icon" class="icon-class"></div>
+					<div class="temp-class">
+						<div id="day5-high-temp"></div>
+						<div id="day5-low-temp"></div>
+					</div>
 				</div>
 				<div id="day6" class="day-container">
 					<h3 id="day6-title" class="day-of-week"></h3>
-					<div id="day6-weather-icon"></div>
-					<div id="day6-high-temp"></div>
-					<div id="day6-low-temp"></div>
+					<div id="day6-weather-icon" class="icon-class"></div>
+					<div class="temp-class">
+						<div id="day6-high-temp"></div>
+						<div id="day6-low-temp"></div>
+					</div>
 				</div>
 			</div>
 		</div>
