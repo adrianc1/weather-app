@@ -1,3 +1,4 @@
+NO WEBPACK
 const searchBtn = document.getElementById('search-btn');
 const changeUnitBtn = document.getElementById('toggle');
 let weatherData;
@@ -54,7 +55,7 @@ function displayDataUI(data) {
 		'Friday',
 		'Saturday',
 	];
-	displayCurrentWeather(data, days);
+	// displayCurrentWeather(data, days);
 	displayFollowingDaysWeather(data, days);
 }
 
@@ -140,7 +141,9 @@ function displayCurrentWeatherIcon(data) {
 // Display Following Days Weather forecast
 function displayFollowingDaysWeather(data, days) {
 	// loop to print out the remainder of the week
-	for (let i = 1; i < days.length; i++) {
+
+	console.log(data);
+	for (let i = 0; i < days.length; i++) {
 		const nextDayTitleDiv = document.getElementById(`day${i}-title`);
 		const nextDayHighTemp = document.getElementById(`day${i}-high-temp`);
 		const nextDayLowTemp = document.getElementById(`day${i}-low-temp`);
