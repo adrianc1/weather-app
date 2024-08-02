@@ -1,4 +1,3 @@
-NO WEBPACK
 const searchBtn = document.getElementById('search-btn');
 const changeUnitBtn = document.getElementById('toggle');
 let weatherData;
@@ -46,9 +45,6 @@ function handleError(err) {
 // Display Following Days Weather forecast
 function displayWeatherData(data) {
 	changeBackgroundImage();
-	if (changeUnitBtn.checked) {
-		console.log('hey');
-	}
 	displayCurrentTempFar(data);
 	displayLocation(data);
 	for (let i = 0; i < 7; i++) {
@@ -68,15 +64,10 @@ function displayDayOfWeek(data, i) {
 		'Friday',
 		'Saturday',
 	];
-<<<<<<< HEAD
-	// displayCurrentWeather(data, days);
-	displayFollowingDaysWeather(data, days);
-=======
 	const nextDayTitleDiv = document.getElementById(`day${i}-title`);
 	const day = data.days[i];
 	const dayIndex = new Date(day.datetime).getUTCDay();
 	nextDayTitleDiv.textContent = days[dayIndex];
->>>>>>> newBranch
 }
 
 function displayLocation(data) {
@@ -103,7 +94,7 @@ function displayWeatherIcon(data, i) {
 	if (nextDayWeatherIconDiv.hasChildNodes()) {
 		nextDayWeatherIconDiv.innerHTML = '';
 	}
-	nextDayWeatherIcon.src = `${data.days[i].icon}.png`;
+	nextDayWeatherIcon.src = `./assets/${data.days[i].icon}.png`;
 	nextDayWeatherIconDiv.appendChild(nextDayWeatherIcon);
 }
 
@@ -168,7 +159,6 @@ async function getGif() {
 	const urls =
 		'https://api.giphy.com/v1/gifs/6g9fN5IYV9Oc8?api_key=iZzRbuOlxTZY4S4wESrrknW7lE0fY3E9&rating=r';
 
-<<<<<<< HEAD
 // Display Following Days Weather forecast
 function displayFollowingDaysWeather(data, days) {
 	// loop to print out the remainder of the week
@@ -201,12 +191,10 @@ function displayFollowingDaysWeather(data, days) {
 		nextDayHighTemp.textContent = `High: ${data.days[i].tempmax}`;
 		nextDayLowTemp.textContent = `Low: ${data.days[i].tempmin}`;
 	}
-=======
 	const gif = await fetch(urls, { mode: 'cors' });
 	const gifJSON = await gif.json();
 	const bkgurl = await gifJSON.data.images.original.url;
 	return bkgurl;
->>>>>>> newBranch
 }
 
 // toggle the degree units
