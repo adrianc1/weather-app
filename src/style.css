@@ -11,6 +11,8 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	font-optical-sizing: auto;
 	font-style: normal;
+
+	color: #fff;
 }
 /* Navigation Bar styling */
 #nav {
@@ -83,7 +85,6 @@ form {
 /* Main Weather Container  */
 
 #main {
-	background-image: url(bkg.jpg);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
