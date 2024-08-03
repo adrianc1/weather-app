@@ -1,5 +1,6 @@
 const searchBtn = document.getElementById('search-btn');
 const changeUnitBtn = document.getElementById('toggle');
+import './style.css';
 let weatherData;
 
 async function getWeatherData(e) {
@@ -22,6 +23,30 @@ async function getWeatherData(e) {
 	}
 }
 
+function getGifPromise() {
+	return new Promise((resolve) => {
+		const urls =
+			'https://api.giphy.com/v1/gifs/6g9fN5IYV9Oc8?api_key=iZzRbuOlxTZY4S4wESrrknW7lE0fY3E9&rating=r';
+
+		fetch(urls)
+			.then((response) => {
+				const json = response.json();
+				return json;
+			})
+			.then((json) => {
+				const bkgurl = json.data.images.original.url;
+				resolve(bkgurl);
+			});
+	});
+}
+
+async function changeBackgroundImage() {
+	const main = document.getElementById('main');
+	const url = await getGifPromise();
+	main.style.backgroundImage = `url('${url}')`;
+	console.log(url);
+}
+
 function extractData(data) {
 	const days = data.days;
 	const currentConditions = data.currentConditions;
@@ -39,7 +64,8 @@ function handleError(err) {
 		console.error('Error: Please enter a valid location. ');
 		return;
 	}
-	throw new Error('FAILED TO FETCH');
+	// throw new Error('FAILED TO FETCH');
+	console.log('hey');
 }
 
 // Display Following Days Weather forecast
@@ -88,14 +114,28 @@ function displayCurrentTempFar(data) {
 	currentTemp.textContent = `Current Temp: ${data.currentConditions.temp} F`;
 }
 
+function importAll(r) {
+	let images = {};
+	r.keys().map((item, index) => {
+		images[item.replace('./', '')] = r(item);
+	});
+	return images;
+}
+
 function displayWeatherIcon(data, i) {
+	const images = importAll(
+		require.context('./assets', false, /\.(png|jpe?g|svg)$/)
+	);
+
 	const nextDayWeatherIcon = new Image();
 	const nextDayWeatherIconDiv = document.getElementById(`day${i}-weather-icon`);
 	if (nextDayWeatherIconDiv.hasChildNodes()) {
 		nextDayWeatherIconDiv.innerHTML = '';
 	}
-	nextDayWeatherIcon.src = `./assets/${data.days[i].icon}.png`;
+	// nextDayWeatherIcon.src = `./assets/${images.data.days[i].icon}.png`;
 	nextDayWeatherIconDiv.appendChild(nextDayWeatherIcon);
+
+	console.log(images);
 }
 
 function displayCelciusCurrentTemp(data) {
@@ -120,13 +160,6 @@ function displayCelciusWeatherData(data) {
 	}
 }
 
-async function changeBackgroundImage() {
-	const main = document.getElementById('main');
-	const url = await getGifPromise();
-	main.style.backgroundImage = `url('${url}')`;
-	console.log(url);
-}
-
 function toggleCurrentFarCel() {
 	const checkboxLabel = document.getElementById('checkbox-label');
 
@@ -137,64 +170,6 @@ function toggleCurrentFarCel() {
 		checkboxLabel.innerHTML = 'Farahenheit';
 		getWeatherData();
 	}
-}
-
-function getGifPromise() {
-	return new Promise((resolve) => {
-		const urls =
-			'https://api.giphy.com/v1/gifs/6g9fN5IYV9Oc8?api_key=iZzRbuOlxTZY4S4wESrrknW7lE0fY3E9&rating=r';
-
-		fetch(urls)
-			.then((response) => {
-				const json = response.json();
-				return json;
-			})
-			.then((json) => {
-				const bkgurl = json.data.images.original.url;
-				resolve(bkgurl);
-			});
-	});
-}
-async function getGif() {
-	const urls =
-		'https://api.giphy.com/v1/gifs/6g9fN5IYV9Oc8?api_key=iZzRbuOlxTZY4S4wESrrknW7lE0fY3E9&rating=r';
-
-// Display Following Days Weather forecast
-function displayFollowingDaysWeather(data, days) {
-	// loop to print out the remainder of the week
-
-	console.log(data);
-	for (let i = 0; i < days.length; i++) {
-		const nextDayTitleDiv = document.getElementById(`day${i}-title`);
-		const nextDayHighTemp = document.getElementById(`day${i}-high-temp`);
-		const nextDayLowTemp = document.getElementById(`day${i}-low-temp`);
-		const nextDayWeatherIconDiv = document.getElementById(
-			`day${i}-weather-icon`
-		);
-
-		// check if weather icon is already present, if so, remove to add a new one
-		if (nextDayWeatherIconDiv.hasChildNodes()) {
-			nextDayWeatherIconDiv.innerHTML = '';
-		}
-
-		// create new icon image to add to html
-		const nextDayWeatherIcon = new Image();
-		nextDayWeatherIcon.src = `${data.days[i].icon}.png`;
-		nextDayWeatherIconDiv.appendChild(nextDayWeatherIcon);
-
-		// display the day of the week as a title on cell
-		const nextDay = data.days[i];
-		const nextDayIndex = new Date(nextDay.datetime).getDay();
-		nextDayTitleDiv.textContent = days[nextDayIndex];
-
-		// get the following days Highs and Lows in F
-		nextDayHighTemp.textContent = `High: ${data.days[i].tempmax}`;
-		nextDayLowTemp.textContent = `Low: ${data.days[i].tempmin}`;
-	}
-	const gif = await fetch(urls, { mode: 'cors' });
-	const gifJSON = await gif.json();
-	const bkgurl = await gifJSON.data.images.original.url;
-	return bkgurl;
 }
 
 // toggle the degree units
