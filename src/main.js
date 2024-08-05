@@ -23,22 +23,22 @@ async function getWeatherData(e) {
 	}
 }
 
-function getGifPromise() {
-	return new Promise((resolve) => {
-		const urls =
-			'https://api.giphy.com/v1/gifs/6g9fN5IYV9Oc8?api_key=iZzRbuOlxTZY4S4wESrrknW7lE0fY3E9&rating=r';
+// function getGifPromise() {
+// 	return new Promise((resolve) => {
+// 		const urls =
+// 			'https://api.giphy.com/v1/gifs/6g9fN5IYV9Oc8?api_key=iZzRbuOlxTZY4S4wESrrknW7lE0fY3E9&rating=r';
 
-		fetch(urls)
-			.then((response) => {
-				const json = response.json();
-				return json;
-			})
-			.then((json) => {
-				const bkgurl = json.data.images.original.url;
-				resolve(bkgurl);
-			});
-	});
-}
+// 		fetch(urls)
+// 			.then((response) => {
+// 				const json = response.json();
+// 				return json;
+// 			})
+// 			.then((json) => {
+// 				const bkgurl = json.data.images.original.url;
+// 				resolve(bkgurl);
+// 			});
+// 	});
+// }
 
 async function changeBackgroundImage() {
 	const main = document.getElementById('main');
@@ -70,7 +70,7 @@ function handleError(err) {
 
 // Display Following Days Weather forecast
 function displayWeatherData(data) {
-	changeBackgroundImage();
+	//changeBackgroundImage()
 	displayCurrentTempFar(data);
 	displayLocation(data);
 	for (let i = 0; i < 7; i++) {
@@ -115,27 +115,29 @@ function displayCurrentTempFar(data) {
 }
 
 function importAll(r) {
-	let images = {};
+	let images = { r };
 	r.keys().map((item, index) => {
-		images[item.replace('./', '')] = r(item);
+		images[item.replace('./', '').replace('.png', '')] = r(item);
 	});
 	return images;
 }
 
 function displayWeatherIcon(data, i) {
-	const images = importAll(
-		require.context('./assets', false, /\.(png|jpe?g|svg)$/)
-	);
-
+	const icons = importAll(require.context('./assets', false, /\.(png)$/));
 	const nextDayWeatherIcon = new Image();
 	const nextDayWeatherIconDiv = document.getElementById(`day${i}-weather-icon`);
+
 	if (nextDayWeatherIconDiv.hasChildNodes()) {
 		nextDayWeatherIconDiv.innerHTML = '';
 	}
-	// nextDayWeatherIcon.src = `./assets/${images.data.days[i].icon}.png`;
-	nextDayWeatherIconDiv.appendChild(nextDayWeatherIcon);
 
-	console.log(images);
+	Object.entries(icons).forEach(([key, value]) => {
+		if (key == data.days[i].icon) {
+			nextDayWeatherIcon.src = value;
+		}
+	});
+
+	nextDayWeatherIconDiv.appendChild(nextDayWeatherIcon);
 }
 
 function displayCelciusCurrentTemp(data) {
