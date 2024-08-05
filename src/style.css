@@ -79,12 +79,16 @@ form {
 	background-color: rgb(104, 104, 246);
 }
 
+input[type='text'] {
+}
+
 #unit-btn {
 	width: 10rem;
 }
 /* Main Weather Container  */
 
 #main {
+	background-image: url('nightbkg.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -95,6 +99,7 @@ form {
 	display: flex;
 	justify-content: space-around;
 	background-color: rgba(153, 143, 213, 0.5);
+	margin-bottom: 40px;
 }
 
 .day-container {
